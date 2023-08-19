@@ -12,7 +12,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     protected boolean runner;
     private Thread hilo;
     public int x = (widthSize - sizeBall)/2;
-    public int y = 250;
+    public int y = 350;
     protected int xr = (widthSize - sizeBall)/2;
     protected final int yr = 450;
     protected final int sizeR = 90;
@@ -22,16 +22,25 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     protected double delta = 0;
     protected int AVGFPS = FPS;
     protected int xm, ym;
-    protected byte[][] rectPoints = {{1,1,1,1,1,1,1,1},
-                                    {1,1,1,1,1,1,1,1},
-                                    {1,1,1,1,1,1,1,1},
-                                    {1,1,1,1,1,1,1,1},
-                                    {1,1,1,1,1,1,1,1},
-                                    {1,1,1,1,1,1,1,1}};
-    protected Point[][] points = new Point[6][8];
+    protected byte[][] rectPoints = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+                                    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}};
+    protected Point[][] points = new Point[15][28];
     protected int initPX = 20;
-    protected int initPY = 50;
-    protected final int sizeRectW = 70, sizeRectH = 30;
+    protected int initPY = 40;
+    protected final int sizeRectW = 20, sizeRectH = 20;
     public GamePanel(){
         this.setUndecorated(true);
         this.pack();
@@ -96,7 +105,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         Graphics2D g2d = (Graphics2D) g;
 
         g2d.clearRect(0,0,widthSize,heightSize);
-        g2d.setColor(Color.DARK_GRAY);
+        g2d.setColor(Color.BLACK);
         g2d.fillRect(0,0,widthSize,heightSize);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setColor(Color.white);
@@ -118,7 +127,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
             initPY +=sizeRectH;
         }
         initPX = 20;
-        initPY = 20;
+        initPY = 40;
 
     }
 
@@ -138,7 +147,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
             initPY +=sizeRectH;
         }
         initPX = 20;
-        initPY = 50;
+        initPY = 40;
 
     }
 
