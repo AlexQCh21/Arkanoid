@@ -51,10 +51,10 @@ public class Fisica {
         for(int i = 0; i< panel.points.length; i++) {
             for(int j = 0; j< panel.points[0].length; j++) {
                 if(panel.rectPoints[i][j]==1) {
-                    if (panel.x + panel.sizeBall == panel.points[i][j].getX() && panel.y + panel.sizeBall >= panel.points[i][j].getY() && panel.y <= panel.points[i][j].getY()) {
+                    if (panel.x + panel.sizeBall == panel.points[i][j].getX()   &&   panel.y + panel.sizeBall >= panel.points[i][j].getY() && panel.y <= panel.points[i][j].getY()+panel.sizeRectH) {
                         goRight = false;
                         panel.rectPoints[i][j] = 0;
-                    } else if (panel.x == panel.points[i][j].getX() + panel.sizeRectW && panel.y == panel.points[i][j].getY() && panel.points[i][j].getY() + panel.sizeBall <= panel.points[i][j].getY()) {
+                    } else if (panel.x == panel.points[i][j].getX() + panel.sizeRectW && panel.y + panel.sizeBall >= panel.points[i][j].getY() && panel.y <= panel.points[i][j].getY()+panel.sizeRectH) {
                         goRight = true;
                         panel.rectPoints[i][j] = 0;
                     }

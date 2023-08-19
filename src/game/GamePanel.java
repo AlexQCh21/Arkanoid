@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 public class GamePanel extends javax.swing.JFrame implements Runnable{
     protected MyKeyEvent keys;
-    public final int sizeBall = 20;
+    public final int sizeBall = 10;
     protected Canvas canvas;
     public final int widthSize = 600;
     public final int heightSize = 500;
