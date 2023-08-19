@@ -4,12 +4,13 @@ public class Fisica {
     protected boolean flag = true, goRight = false, goTop = false;
     protected int v = 5;
     public void collision(GamePanel panel){
+        collisionR(panel);
         if(flag){
             panel.x+=v;
             panel.y+=v;
         }
 
-        collisionR(panel);
+
 
         if(panel.x == 0){
             goRight = true;
@@ -19,7 +20,8 @@ public class Fisica {
         }
 
         if(panel.y+panel.sizeBall >= panel.heightSize){
-            goTop = true;
+            panel.runner1=false;
+            /*goTop = true;*/
             flag = false;
         } else if(panel.y ==0){
             goTop = false;

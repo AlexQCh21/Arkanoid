@@ -9,7 +9,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     protected Canvas canvas;
     public final int widthSize = 600;
     public final int heightSize = 500;
-    protected boolean runner;
+    protected boolean runner = false, runner1 = false;
     private Thread hilo;
     public int x = (widthSize - sizeBall)/2;
     public int y = 350;
@@ -44,7 +44,6 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     public GamePanel(){
         this.setUndecorated(true);
         this.pack();
-        this.requestFocus();
         setSize(widthSize,heightSize);
         setVisible(true);
         setLocationRelativeTo(null);
@@ -56,10 +55,10 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         canvas.setMinimumSize(new Dimension(widthSize,heightSize));
         canvas.setFocusable(true);
         this.add(canvas);
-        canvas.addMouseListener(new MyMouseEvent());
         canvas.addKeyListener(keys);
         canvas.addMouseMotionListener(new MyMouseMotionEvent());
         start();
+        canvas.requestFocus();
         initPoints();
     }
 
@@ -90,7 +89,9 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     }
 
     public void update(){
-        fs.collision(this);
+        if(runner1) {
+            fs.collision(this);
+        }
     }
 
     public void render(){
@@ -107,14 +108,18 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         g2d.clearRect(0,0,widthSize,heightSize);
         g2d.setColor(Color.BLACK);
         g2d.fillRect(0,0,widthSize,heightSize);
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2d.setColor(Color.white);
-        g2d.fillOval(x,y,sizeBall,sizeBall);
+        if(runner1) {
+            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2d.setColor(Color.white);
+            g2d.fillOval(x, y, sizeBall, sizeBall);
+
+        }
         g2d.setColor(Color.blue);
-        g2d.fillRect(xr,yr,sizeR,10);
+        g2d.fillRect(xr, yr, sizeR, 10);
         drawRectG(g2d);
         g2d.dispose();
         bs.show();
+
     }
 
     public void initPoints(){
@@ -178,7 +183,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
             }
 
             if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-                runner=true;
+                runner1 = true;
             }
         }
     }
@@ -189,13 +194,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         }
     }
 
-    public class MyMouseEvent extends java.awt.event.MouseAdapter{
-        @Override
-        public void mousePressed(MouseEvent evt){
-           // xm = evt.getX();
-        }
 
-    }
 
     public class MyMouseMotionEvent extends java.awt.event.MouseMotionAdapter{
         @Override
