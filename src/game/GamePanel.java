@@ -13,9 +13,9 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     private Thread hilo;
     public int x = (widthSize - sizeBall)/2;
     public int y = 350;
-    protected int xr = (widthSize - sizeBall)/2;
-    protected final int yr = 450;
     protected final int sizeR = 90;
+    protected int xr = (widthSize - sizeR)/2;
+    protected final int yr = 450;
     protected final Fisica fs = new Fisica();
     protected final int FPS = 60;
     protected double TARGETTIME = 1000000000/FPS;
@@ -112,7 +112,6 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2d.setColor(Color.white);
             g2d.fillOval(x, y, sizeBall, sizeBall);
-
         }
         g2d.setColor(Color.blue);
         g2d.fillRect(xr, yr, sizeR, 10);
@@ -226,7 +225,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
                 rectPoints[i][j]=1;
             }
         }
-        xr = (widthSize - sizeBall)/2;
+        xr = (widthSize - sizeR)/2;
         y = 350;
         x = (widthSize - sizeBall)/2;
     }
