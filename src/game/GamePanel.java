@@ -185,6 +185,11 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
             if(evt.getKeyCode() == KeyEvent.VK_ENTER){
                 runner1 = true;
             }
+
+            if(evt.getKeyCode() == KeyEvent.VK_ALT){
+                initValues();
+
+            }
         }
     }
 
@@ -209,5 +214,20 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         if(xr>0){
             xr-=10;
         }
+    }
+
+    public void initValues(){
+        runner1 = false;
+        fs.flag=true;
+        fs.goRight = false;
+        fs.goTop = false;
+        for(int i = 0; i<rectPoints.length;i++){
+            for(int j = 0; j<rectPoints[0].length;j++){
+                rectPoints[i][j]=1;
+            }
+        }
+        xr = (widthSize - sizeBall)/2;
+        y = 350;
+        x = (widthSize - sizeBall)/2;
     }
 }
