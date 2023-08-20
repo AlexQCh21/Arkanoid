@@ -10,8 +10,6 @@ public class Fisica {
             panel.y+=v;
         }
 
-
-
         if(panel.x == 0){
             goRight = true;
             flag = false;
