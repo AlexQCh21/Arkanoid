@@ -54,17 +54,21 @@ public class Fisica {
                     if (panel.x + panel.sizeBall == panel.points[i][j].getX()   &&   panel.y + panel.sizeBall >= panel.points[i][j].getY() && panel.y <= panel.points[i][j].getY()+panel.sizeRectH) {
                         goRight = false;
                         panel.rectPoints[i][j] = 0;
+                        Sound.playSound("src/sound/colision.wav");
                     } else if (panel.x == panel.points[i][j].getX() + panel.sizeRectW && panel.y + panel.sizeBall >= panel.points[i][j].getY() && panel.y <= panel.points[i][j].getY()+panel.sizeRectH) {
                         goRight = true;
                         panel.rectPoints[i][j] = 0;
+                        Sound.playSound("src/sound/colision.wav");
                     }
 
                     if (panel.x + panel.sizeBall >= panel.points[i][j].getX() && panel.x <= panel.points[i][j].getX() + panel.sizeRectW && panel.y + panel.sizeBall == panel.points[i][j].getY()) {
                         goTop = true;
                         panel.rectPoints[i][j] = 0;
+                        Sound.playSound("src/sound/colision.wav");
                     } else if (panel.x + panel.sizeBall >= panel.points[i][j].getX() && panel.x <= panel.points[i][j].getX() + panel.sizeRectW && panel.y == panel.points[i][j].getY() + panel.sizeRectH) {
                         goTop = false;
                         panel.rectPoints[i][j] = 0;
+                        Sound.playSound("src/sound/colision.wav");
                     }
                 }
             }

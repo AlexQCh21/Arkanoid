@@ -49,6 +49,7 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
+        Sound.playMusic("src/sound/music.wav");
         keys =new MyKeyEvent();
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(widthSize,heightSize));
