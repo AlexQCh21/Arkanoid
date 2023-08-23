@@ -37,7 +37,7 @@ public class Sound {
                 AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
                 clip = AudioSystem.getClip();
                 clip.open(audioInput);
-                clip.setFramePosition(96000);
+                clip.setFramePosition(96500);
                 clip.start();
                 if(clip.getMicrosecondPosition() == 3000){
                     clip.close();
