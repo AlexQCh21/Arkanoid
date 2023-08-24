@@ -5,18 +5,18 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 
 public class GamePanel extends javax.swing.JFrame implements Runnable{
-    protected MyKeyEvent keys;
+    protected MyKeyEvent keys = new MyKeyEvent();
     public final int sizeBall = 10;
     protected Canvas canvas;
-    public final int widthSize = 600;
-    public final int heightSize = 500;
+    public static final int widthSize = 600;
+    public static final int heightSize = 500;
     protected boolean runner = false, runner1 = false;
     private Thread hilo;
     public int x = (widthSize - sizeBall)/2;
     public int y = 350;
     protected final int sizeR = 90;
     protected int xr = (widthSize - sizeR)/2;
-    protected final int yr = 450;
+    protected final int yr = 480;
     protected final Fisica fs = new Fisica();
     protected final int FPS = 60;
     protected double TARGETTIME = 1000000000/FPS;
@@ -50,7 +50,6 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         setLocationRelativeTo(null);
         setResizable(false);
         Sound.playMusic("src/sound/music.wav");
-        keys =new MyKeyEvent();
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(widthSize,heightSize));
         canvas.setMaximumSize(new Dimension(widthSize,heightSize));
@@ -59,10 +58,12 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
         this.add(canvas);
         canvas.addKeyListener(keys);
         canvas.addMouseMotionListener(new MyMouseMotionEvent());
+        canvas.setVisible(true);
         start();
         canvas.requestFocus();
         initPoints();
     }
+
 
     @Override
     public void run() {
