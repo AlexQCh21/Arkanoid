@@ -56,7 +56,15 @@ public class GameIntroPanel extends JPanel {
                     incrementItem();
                     repaint();
                 }
-                case KeyEvent.VK_ENTER -> mediator.initGame();
+                case KeyEvent.VK_ENTER ->{
+                    if(selectedItem==0) {
+                            mediator.initGame();
+                        }else if(selectedItem==1){
+
+                        }else {
+                            System.exit(0);
+                        }
+                }
             }
         }
     }
