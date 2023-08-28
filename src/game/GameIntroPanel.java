@@ -8,23 +8,27 @@ public class GameIntroPanel extends JPanel {
 
     protected final String[] menuText = {"Iniciar","Puntaje","Salir"};
     protected int selectedItem = 0;
-    public GameIntroPanel(){
+    private Mediator mediator;
+    public GameIntroPanel(JFrame mediator){
+        this.mediator=(Mediator)mediator;
+        this.setVisible(true);
         this.setPreferredSize(new Dimension(GamePanel.widthSize,GamePanel.heightSize));
         this.setBackground(Color.black);
         this.setFocusable(true);
-        this.addKeyListener(new MyKey());
         this.requestFocus();
+        this.addKeyListener(new MyKey());
+
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        Font f = new Font("Times New Roman",Font.BOLD,40);
+        Font f = new Font("Times New Roman",Font.BOLD,30);
         FontMetrics fm = g.getFontMetrics();
         g.setFont(f);
         g.setColor(Color.white);
         for(int i = 0; i<menuText.length;i++){
             int x = (GamePanel.widthSize - fm.stringWidth(menuText[i]))/2;
-            int y = fm.getHeight()+100+(i*(fm.getHeight()+40));
+            int y = fm.getHeight()+100+(i*(fm.getHeight()+30));
             g.drawString(menuText[i],x,y);
             if(selectedItem == i){
                 drawCircle(x-60,y-30,g);
@@ -52,7 +56,7 @@ public class GameIntroPanel extends JPanel {
                     incrementItem();
                     repaint();
                 }
-                case KeyEvent.VK_ENTER -> Mediator.initGame();
+                case KeyEvent.VK_ENTER -> mediator.initGame();
             }
         }
     }

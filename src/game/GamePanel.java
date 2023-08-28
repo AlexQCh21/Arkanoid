@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 
-public class GamePanel extends javax.swing.JFrame implements Runnable{
+public class GamePanel extends java.awt.Canvas implements Runnable{
     protected MyKeyEvent keys = new MyKeyEvent();
     public final int sizeBall = 10;
     protected Canvas canvas;
@@ -42,25 +42,29 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     protected int initPX = 20;
     protected int initPY = 40;
     protected final int sizeRectW = 20, sizeRectH = 20;
-    public GamePanel(){
+    private Mediator mediator;
+    public GamePanel(javax.swing.JFrame frame){
+        mediator = (Mediator)frame;
+        /*
         this.setUndecorated(true);
         this.pack();
         setSize(widthSize,heightSize);
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
+        */
+        //canvas = new Canvas();
         Sound.playMusic("src/sound/music.wav");
-        canvas = new Canvas();
-        canvas.setPreferredSize(new Dimension(widthSize,heightSize));
-        canvas.setMaximumSize(new Dimension(widthSize,heightSize));
-        canvas.setMinimumSize(new Dimension(widthSize,heightSize));
-        canvas.setFocusable(true);
-        this.add(canvas);
-        canvas.addKeyListener(keys);
-        canvas.addMouseMotionListener(new MyMouseMotionEvent());
-        canvas.setVisible(true);
-        start();
-        canvas.requestFocus();
+        setPreferredSize(new Dimension(widthSize,heightSize));
+        setMaximumSize(new Dimension(widthSize,heightSize));
+        setMinimumSize(new Dimension(widthSize,heightSize));
+        setFocusable(true);
+        //this.add(canvas);
+        addKeyListener(keys);
+        addMouseMotionListener(new MyMouseMotionEvent());
+        setVisible(true);
+        //start();
+        requestFocus();
         initPoints();
     }
 
@@ -98,10 +102,10 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
     }
 
     public void render(){
-        BufferStrategy bs = canvas.getBufferStrategy();
+        BufferStrategy bs = this.getBufferStrategy();
 
         if(bs == null){
-            canvas.createBufferStrategy(3);
+            this.createBufferStrategy(3);
             return;
         }
 
@@ -181,7 +185,8 @@ public class GamePanel extends javax.swing.JFrame implements Runnable{
                 moveL();
             }
             if(evt.getKeyCode() == KeyEvent.VK_ESCAPE){
-                runner=false;
+                //runner=false;
+                mediator.goPanelSettings();
             }
 
             if(evt.getKeyCode() == KeyEvent.VK_ENTER){
