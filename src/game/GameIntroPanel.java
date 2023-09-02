@@ -27,8 +27,8 @@ public class GameIntroPanel extends JPanel {
         g.setFont(f);
         g.setColor(Color.white);
         for(int i = 0; i<menuText.length;i++){
-            int x = (GamePanel.widthSize - fm.stringWidth(menuText[i]))/2;
-            int y = fm.getHeight()+100+(i*(fm.getHeight()+30));
+            int x = (GamePanel.widthSize - fm.stringWidth(menuText[i]))/2-20;
+            int y = fm.getHeight()+150+(i*(fm.getHeight()+30));
             g.drawString(menuText[i],x,y);
             if(selectedItem == i){
                 drawCircle(x-60,y-30,g);
@@ -48,7 +48,6 @@ public class GameIntroPanel extends JPanel {
         public void keyPressed(KeyEvent evt){
             switch (evt.getKeyCode()) {
                 case KeyEvent.VK_UP -> {
-                    System.out.println("Arriba");
                     decrementItem();
                     repaint();
                 }
